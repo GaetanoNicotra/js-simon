@@ -6,7 +6,7 @@ let numbersList = document.getElementById('numbers-list');
 
 for (i = 0; i < 5; i++) {
 
-    let randomNumbers = Math.floor(Math.random() * 98) + 1;
+    let randomNumbers = Math.floor(Math.random() * 53) + 1;
 
     const li = document.createElement('li')
     li.append(randomNumbers)
@@ -16,10 +16,13 @@ for (i = 0; i < 5; i++) {
 // USO LE TIMING FUNCTION PER CREARE IL COUNTDOWN DI 30 SECONDI
 
 // RECUPERO O DICHIARO GLI ELEMENTI E VARIABILI CHE MI SERVONO 
-let time = 10;
+let time = 4;
 const countdown = document.getElementById('countdown')
-countdown.innerText = time --;
-const number = document.querySelectorAll('number')
+countdown.innerText = time--;
+const formControl = document.querySelectorAll('.form-control')
+const answersForm = document.getElementById('answers-form')
+const message = document.getElementById('message')
+
 
 const countdownScreen = setInterval(function () {
 
@@ -28,9 +31,21 @@ const countdownScreen = setInterval(function () {
     }
     else {
         clearInterval(countdownScreen)
-        numbersList.innerText = number
-
+        numbersList.remove()
+        answersForm.classList.remove('d-none')
     }
     time--;
+    console.log(formControl.innerText)
+    console.log(randomNumbers)
+    if (formControl.innerText == randomNumbers) {
+        message.innerText('Hai indovinato')
+        console.log('true')
+    }
+
+    else {
+        message.innerText('hai sbagliato')
+        console.log('false')
+    }
+
 }, 1000)
 
