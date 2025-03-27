@@ -10,8 +10,7 @@ for (i = 0; i < 5; i++) {
     console.log(randomNumbers)
 
     const li = document.createElement('li')
-
-    li.append(randomNumbers[i])
+    li.append(randomNumbers)
     console.log(li)
     numbersList.appendChild(li)
 }
