@@ -15,7 +15,7 @@ for (i = 0; i < 5; i++) {
 // USO LE TIMING FUNCTION PER CREARE IL COUNTDOWN DI 30 SECONDI
 
 // RECUPERO O DICHIARO GLI ELEMENTI E VARIABILI CHE MI SERVONO 
-let time = 5;
+let time = 30;
 const countdown = document.getElementById('countdown')
 const number = document.querySelectorAll('.number')
 const formControl = document.querySelectorAll('.form-control')
@@ -23,6 +23,8 @@ const answersForm = document.getElementById('answers-form')
 const message = document.getElementById('message')
 const button = document.querySelector('.button')
 countdown.innerText = time--;
+
+// CREO IL COUNTDOWN
 const countdownScreen = setInterval(function () {
 
     if (time != -1) {
@@ -34,10 +36,10 @@ const countdownScreen = setInterval(function () {
         answersForm.classList.remove('d-none')
     }
     time--;
-
-
 }, 1000)
 
+
+// CREO L'EVENTO CHE DEVE VERIFICARSI AL CLIK DEL BOTTONE
 button.addEventListener('click', function (event) {
     event.preventDefault()
   
@@ -57,10 +59,14 @@ button.addEventListener('click', function (event) {
 
     if (risposteCorrette.length === 5) {
         message.innerText = 'Hai indovinato tutti i numeri!' + risposteCorrette;
+        message.classList.remove('text-danger')
+        message.classList.add('text-success')
     }
 
     else if (risposteCorrette.length > 0) {
         message.innerText = 'Hai indovinato solo:' + risposteCorrette;
+        message.classList.add('text-danger')
+        message.classList.remove('text-success')
      
     }
     else {
